@@ -39,6 +39,11 @@ angular
         controller: 'ReportdetailCtrl',
         controllerAs: 'reportDetail'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .otherwise({
         redirectTo: '/'
       });
