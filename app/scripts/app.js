@@ -34,6 +34,11 @@ angular
         controller: 'ReportaddCtrl',
         controllerAs: 'reportAdd'
       })
+      .when('/report/:id', {
+        templateUrl: 'views/reportdetail.html',
+        controller: 'ReportdetailCtrl',
+        controllerAs: 'reportDetail'
+      })
       .otherwise({
         redirectTo: '/'
       });
