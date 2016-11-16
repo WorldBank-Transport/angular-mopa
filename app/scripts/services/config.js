@@ -9,5 +9,5 @@
  */
 angular.module('mopaApp')
   .constant('config', {
-    API_ROOT: 'http://dev.opengov.cc/georeport/v2/'
+    API_ROOT: 'http://dev.opengov.cc/georeport/v2'
   });
