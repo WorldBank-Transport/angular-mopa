@@ -8,10 +8,8 @@
  * Controller of the mopaApp
  */
 angular.module('mopaApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, report) {
+    report.query(function(data) {
+        $scope.reports = data;
+      });
   });

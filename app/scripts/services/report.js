@@ -8,16 +8,11 @@
  * Factory in the mopaApp.
  */
 angular.module('mopaApp')
-  .factory('report', function () {
-    // Service logic
-    // ...
+  .factory('report', function ($resource, config) {
 
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+    var resourceConfig = {
+      get: {method: 'GET', isArray: true}
     };
+
+    return $resource(config.API_ROOT + '/requests/:id.json', {}, resourceConfig);
   });
