@@ -8,10 +8,11 @@
  * Controller of the mopaApp
  */
 angular.module('mopaApp')
-  .controller('ReportdetailCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ReportdetailCtrl', function ($scope, $routeParams, report) {
+    report.get({id: $routeParams.id}, function(response) {
+      if(response.status === 404) {
+        $scope.report = null;
+      }
+      $scope.report = response[0];
+    });
   });
