@@ -1,1 +1,27 @@
-<p>This is the login view.</p>
+  
+<!-- Form Mixin-->
+<!-- Input Mixin-->
+<!-- Button Mixin-->
+<!-- Pen Title-->
+<br>
+<div class="pen-title">
+  <h1>Feedback System</h1>
+</div>
+<!-- Form Module-->
+<div class="module form-module">
+  <div class="">
+   
+  </div>
+  <div class="form">
+    <h2>Login to your account</h2>
+
+    <form name="form" ng-submit="vm.login()" role="form">
+      <input name="username" id="username" type="text" placeholder="Username"/>
+      <input name ="password" id="password" type="password" placeholder="Password" hidden/>
+      <input type="submit" text="Submit" ng-disabled="form.$invalid || vm.dataLoading"/>
+    </form>
+  </div>
+  
+  <div class="cta"><a href="#">Forgot your password?</a></div>
+</div>
+  
