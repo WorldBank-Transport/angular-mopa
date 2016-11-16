@@ -8,4 +8,6 @@
  * Constant in the mopaApp.
  */
 angular.module('mopaApp')
-  .constant('config', 42);
+  .constant('config', {
+    API_ROOT: 'http://dev.opengov.cc/georeport/v2/'
+  });
