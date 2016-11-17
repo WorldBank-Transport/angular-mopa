@@ -15033,10 +15033,10 @@ body[ng-controller] .modal {
     margin-left: 0;
     margin-right: 5px
 }
-.table thead tr th {
+/*.table thead tr th {
     font-size: 14px;
     font-weight: 600
-}
+}*/
 .table-advance {
     margin-bottom: 10px!important
 }
