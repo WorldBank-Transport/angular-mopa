@@ -8,17 +8,50 @@
   <h2>Create new report</h2>
 </div>
 <!-- Form Module-->
-<div class="module form-module">
+<div class="module form-module add-report">
   <div class="form" >
     <h2>Report details</h2>
     <form class="">
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="col-sm-6">
+      <legend>Call Details:</legend>
       <div class="form-group">
-        <label>Start date:</label> 
-        <input class="form-control" type="date" name="start_date" autocomplete=on />
+        <label>Start time:</label> 
+        <input class="form-control" type="date" name="startDate" autocomplete=on />
+      </div>
+      <div class="form-group">
+        <label>End time:</label> 
+        <input class="form-control" type="date" name="endDate" autocomplete=on />
+      </div>
+
+      <legend> Client details</legend>
+      <div class="form-group">
+        <label>Name</label> 
+        <input class="form-control" type="text" name="clientName" />
+      </div>
+      <div class="form-group">
+        <label>Account number</label> 
+        <input class="form-control" type="text" name="accountNumber" />
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label> 
+        <input class="form-control" type="text" name="phoneNumber" />
+      </div>
+      <div class="form-group">
+        <label>Email</label> 
+        <input class="form-control" type="email" name="email" />
+      </div>
+
+      <legend> Location</legend>
+      <div class="form-group">
+        <label>Address:</label> 
+        <input class="form-control" type="text" name="address" />
       </div>
       <div class="form-group">
         <label>Area:</label>
-        <select class="selectpicker form-control" name="areas">
+        <select class="selectpicker form-control form-control-sm" name="areas">
           <option value="head_quater">Head quarter</option>
           <option value="kinondoni">Kinondoni office</option>
           <option value="kawe">Kawe office</option>
@@ -36,13 +69,23 @@
 
         </select>
       </div>
+      </div>
+      <div class="col-sm-6">
+      <legend> Complaint</legend>
+
       <div class="form-group">
         <label>Category:</label>
         <input type="text" />
       </div>
       <div class="form-group">
+        <label>Complaint Details</label>
+        <textarea class="form-control" rows="5" id="complaintDetails"></textarea>
+      </div>
+
+      <legend> Follow-up</legend>
+      <div class="form-group">
         <label>Status:</label>
-        <select class="selectpicker form-control" name="status">
+        <select class="selectpicker form-control form-control-sm" name="status">
           <option value="open"> Open </option>
           <option value="inProgress"> In progress </option>
           <option value="sentToArea"> Sent to area </option>
@@ -50,8 +93,12 @@
         </select>
       </div>
       <div class="form-group">
+        <label>Actions taken</label> 
+        <textarea class="form-control" rows="4" id="actionsTaken"></textarea>
+      </div>
+      <div class="form-group">
         <label>Assigned to:</label> 
-       <select class="selectpicker form-control" name="assigned_to">
+        <select class="selectpicker form-control form-control-sm" name="assignedTo">
           <option value="controlRoom"> Control room </option>
           <option value="engineer"> Engineer </option>
           <option value="customerCare"> Customer care </option>
@@ -60,8 +107,22 @@
         </select> 
       </div>
       <div class="form-group">
-        <label>Comment:</label> <input type="text" />
+        <label>Mode of forwarding:</label>
+        <select class="selectpicker form-control form-control-sm" name="forwadingMode">
+          <option value="email"> Email </option>
+          <option value="phone"> Phone</option>
+          <option value="sms"> SMS</option>
+        </select>
       </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox form-control-lg" name="feedback"> Feedback to citizen 
+        </label>
+      </div>
+      </div>
+      </div>
+      </div>
+
       <button>Submit</button>
 
     </form>
