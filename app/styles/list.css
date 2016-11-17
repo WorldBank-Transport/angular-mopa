@@ -140,6 +140,12 @@ div.tb-body{
 
 th{
   background-color: #33b5e5;
+  font-size:20%;
+}
+
+
+.table thead tr th {
+    font-size: 18px;
 }
 /*
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
