@@ -1,172 +1,121 @@
 
+
+<!-- Form Mixin-->
+<!-- Input Mixin-->
+<!-- Button Mixin-->
+<!-- Pen Title-->
+
+<!-- Form Module-->
+
+
 <div class="col-sm-12">
   <div class="pen-title" style="text-align:left;margin:10 0 10 10; padding:0px 10px 0px 10px;">
     <h1>Welcome Admin</h1>
   </div>
-
   <div class="container">
     <div class="row btn-row">
+      
       <div class="col-sm-6 btn btn-lg green btn-outline">
-        <a href="create.html" type="button" class="">New Report</a>
+        <a ng-href="./report/add" type="button" class="">New Report</a>
       </div>
       <div class="col-sm-6 btn btn-lg green btn-outline">
-        <a href="list.html" type="button" class="">Reports</a>
+        <a ng-href="./report/" type="button" class="">Reports</a>
       </div>
     </div>
-
     <div class="row">
       <div class="col-sm-6 btn btn-lg green btn-outline">
-        <a href="settings.html" type="button" class="">Settings</a>
+        <a ng-href="./settings" type="button" class="">Settings</a>
       </div>
       <div class="col-sm-6 btn btn-lg green btn-outline">
-        <a href="profile.html" type="button" class="">Profile</a>
+        <a ng-href="./profile" type="button" class="">Profile</a>
       </div>
     </div>
   </div>
-  
+
 
 </div>
+
+
+</body>
+
+
 
 <div class="tb-body">
 
-<div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-  <div class="pen-title mg">
-    <h3>Reports</h3>
+  <div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    <div class="pen-title mg">
+      <h3>Reports</h3>
+    </div>
+    <div class="row"><div class="col-sm-12">
+
+
+
+      <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Start date</th>
+            <th>Area</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Assigned to</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Id</th>
+            <th>Start date</th>
+            <th>Area</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Assigned to</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2011/02/04</td>
+            <td>Kimara</td>
+            <td>Lack of water</td>
+            <td>Open</td>
+            <td>Engineer</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2011/07/25</td>
+            <td>Tabata</td>
+            <td>Leakage</td>
+            <td>Open</td>
+            <td>Control room</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>2009/01/12</td>
+            <td>Kawe</td>
+            <td>Disconnection</td>
+            <td>Complete</td>
+            <td>Engineer</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>2009/04/12</td>
+            <td>Kimara</td>
+            <td>Illegal connection</td>
+            <td>In progress</td>
+            <td>Customer care</td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+    </div>
+
   </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Start date</th>
-                    <th>Area</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Assigned to</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Start date</th>
-                    <th>Description</th>
-                    <th>Comments</th>
-                    <th>Address</th>
-                </tr>
-            </tfoot>
-            <tbody>
-                <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                </tr>
-                <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                </tr>
-                <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                </tr>
-                <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                </tr>
-                <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                </tr>
-                <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2012/12/02</td>
-                    <td>$372,000</td>
-                </tr>
-                <tr>
-                    <td>Herrod Chandler</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                    <td>2012/08/06</td>
-                    <td>$137,500</td>
-                </tr>
-                <tr>
-                    <td>Rhona Davidson</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>2010/10/14</td>
-                    <td>$327,900</td>
-                </tr>
-                <tr>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>2009/09/15</td>
-                    <td>$205,500</td>
-                </tr>
-                <tr>
-                    <td>Sonya Frost</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>2008/12/13</td>
-                    <td>$103,600</td>
-                </tr>
-                <tr>
-                    <td>Jena Gaines</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>30</td>
-                    <td>2008/12/19</td>
-                    <td>$90,560</td>
-                </tr>
-                <tr>
-                    <td>Quinn Flynn</td>
-                    <td>Support Lead</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2013/03/03</td>
-                    <td>$342,000</td>
-                </tr>
-                <tr>
-                    <td>Charde Marshall</td>
-                    <td>Regional Director</td>
-                    <td>San Francisco</td>
-                    <td>36</td>
-                    <td>2008/10/16</td>
-                    <td>$470,600</td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
 </div>
+
+</div>
+
+
 
 <br><br>

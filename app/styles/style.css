@@ -145,3 +145,15 @@ body {
 .form-module input[type="submit"]:hover{
   background: #178ab4;
 }
+
+.add-report{
+  position: relative;
+  background: #ffffff;
+  max-width: none;
+  width: 80%;
+  border-top: 5px solid #33b5e5;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+
+}
+
