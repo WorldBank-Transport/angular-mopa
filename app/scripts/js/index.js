@@ -15,10 +15,6 @@ $('.toggle').click(function(){
   }, "slow");
 });
 
-
-/*global SyntaxHighlighter*/
-SyntaxHighlighter.config.tagName = 'code';
-
 if ( window.$ ) {
 	$(document).ready( function () {
 		if ( ! $.fn.dataTable ) {
