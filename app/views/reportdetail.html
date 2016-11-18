@@ -24,30 +24,30 @@
       <legend> Client details</legend>
       <div class="form-group">
         <label>Name</label> 
-        <input class="form-control" type="text" name="clientName" ng-model="report.name"/>
+        <input class="form-control" type="text" name="clientName" ng-model="report.name" ng-disabled="true"/>
       </div>
       <div class="form-group">
         <label>Account number</label> 
-        <input class="form-control" type="text" name="accountNumber" ng-model="report.account_number"/>
+        <input class="form-control" type="text" name="accountNumber" ng-model="report.account_number" ng-disabled="true"/>
       </div>
 
       <div class="form-group">
         <label>Phone</label> 
-        <input class="form-control" type="text" name="phoneNumber" ng-model="report.phone" ng-disabled="true"/>
+        <input class="form-control" type="text" name="phoneNumber" ng-model="report.phone" ng-disabled="true" ng-disabled="true"/>
       </div>
       <div class="form-group">
         <label>Email</label> 
-        <input class="form-control" type="email" name="email" ng-model="report.email"/>
+        <input class="form-control" type="email" name="email" ng-model="report.email" ng-disabled="true"/>
       </div>
 
       <legend> Location</legend>
       <div class="form-group">
         <label>Address:</label> 
-        <input class="form-control" type="text" name="address" ng-model="report.address"/>
+        <input class="form-control" type="text" name="address" ng-model="report.address" ng-disabled="true"/>
       </div>
       <div class="form-group">
         <label>Area:</label>
-        <select class="selectpicker form-control form-control-sm" name="areas" ng-model="report.agency_responsible">
+        <select class="selectpicker form-control form-control-sm" name="areas" ng-model="report.agency_responsible" ng-disabled="true">
           <option value="head_quater">Head quarter</option>
           <option value="kinondoni">Kinondoni office</option>
           <option value="kawe">Kawe office</option>
@@ -72,12 +72,13 @@
       <div class="form-group">
         <label>Category:</label>
         <select class="form-control" ng-model="report.service_code"
-            ng-options="item.service_code as item.service_name for item in serviceCodes">
+            ng-options="item.service_code as item.service_name for item in serviceCodes"
+            ng-disabled="true">
         </select>
       </div>
       <div class="form-group">
         <label>Complaint Details</label>
-        <textarea class="form-control" rows="5" id="complaintDetails" ng-model="report.description"></textarea>
+        <textarea class="form-control" rows="5" id="complaintDetails" ng-model="report.description" ng-disabled="true"></textarea>
       </div>
 
       <legend>Follow-up</legend>
