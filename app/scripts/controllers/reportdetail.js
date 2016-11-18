@@ -9,7 +9,7 @@
  */
 angular.module('mopaApp')
   .controller('ReportdetailCtrl', function ($scope, $routeParams, $http, config, report) {
-    $scope.serviceCodes = []
+    $scope.serviceCodes = [];
     $scope.pageStatusMessage = 'loading ...';
 
     $http.get(config.API_ROOT + '/services.json', {}).then(function (response){
