@@ -37,7 +37,9 @@
       <!-- Add your site or application content here -->
 
       <div class="">
-        <div ng-view=""></div>
+        <div ng-view="">
+          
+        </div>
       </div>
 
       <div class="footer">
@@ -77,13 +79,16 @@
 
      <!-- build:js({.tmp,app}) scripts/scripts.js -->
      <script src="scripts/app.js"></script>
+     
+     <script src="scripts/services/report.js"></script>
+     <script src="scripts/services/config.js"></script>
+     <script src="scripts/services/authentication.js"></script>
      <script src="scripts/controllers/main.js"></script>
      <script src="scripts/controllers/about.js"></script>
      <script src="scripts/controllers/reportadd.js"></script>
      <script src="scripts/controllers/reportdetail.js"></script>
      <script src="scripts/controllers/login.js"></script>
-     <script src="scripts/services/report.js"></script>
-     <script src="scripts/services/config.js"></script>
+     <script src="scripts/controllers/logout.js"></script>
      <script src="scripts/js/index.js"></script>
 
 

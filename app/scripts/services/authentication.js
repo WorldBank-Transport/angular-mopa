@@ -1,110 +1,129 @@
 'use strict';
- 
-    angular
-        .module('mopaApp')
-        .factory('AuthenticationService', AuthenticationService);
- 
-    AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
-    function AuthenticationService($http, $cookieStore, $rootScope, $timeout) {
-        var service = {};
- 
-        service.Login = Login;
-        service.SetCredentials = SetCredentials;
-        service.ClearCredentials = ClearCredentials;
- 
-        return service;
- 
-        function Login(username, password, callback) {
- 
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
-            $timeout(function () {
-                var response;
 
-                if (username === "test" && user.password === "pas") {
-                    response = { success: true };
-                } else {
-                    response = { success: false, message: 'Username or password is incorrect' };
-                }
+angular
+.module('mopaApp')
+.factory('AuthenticationService',
+    ['Base64', '$http', '$cookieStore', '$rootScope',
+    function (Base64, $http, $cookieStore, $rootScope) {
+        var service = {};
+
+        service.Login = function (username, password, callback) {
+
+            var data = {'username':username, 'password':password};
+            var config = { 'headers': {'Content-type': 'application/json'}};
+
+            var query = function (){
+                $http.post('http://dev.opengov.cc/userapi/user/login.json',
+                    data,
+                    config
+                    )
+                .then(
+                    function(response) {
+                        console.log(response);
+                        if(!response.data){
+                            response.message = 'Wrong username or password.)';
+            }
+            callback(response);
+        },
+        function(response) {
+            response.message = 'Wrong username or password.)';
                 callback(response);
 
-            }, 1000);
- 
+            }
+
+            );
+
+
+            };
+            query();
+
+
             /* Use this for real authentication
-             ----------------------------------------------*/
+            ----------------------------------------------*/
             //$http.post('/api/authenticate', { username: username, password: password })
             //    .success(function (response) {
             //        callback(response);
             //    });
- 
+
+};
+
+service.SetCredentials = function (username, password) {
+    var authdata = Base64.encode(username + ':' + password);
+
+    $rootScope.globals = {
+        currentUser: {
+            username: username,
+            authdata: authdata
         }
- 
-        function SetCredentials(username, password) {
-            var authdata = Base64.encode(username + ':' + password);
- 
-            $rootScope.globals = {
-                currentUser: {
-                    username: username,
-                    authdata: authdata
-                }
-            };
- 
+    };
+
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
-        }
- 
-        function ClearCredentials() {
+        };
+
+        service.ClearCredentials = function () {
             $rootScope.globals = {};
             $cookieStore.remove('globals');
-            $http.defaults.headers.common.Authorization = 'Basic';
-        }
-    }
- 
-    // Base64 encoding service used by AuthenticationService
-    var Base64 = {
- 
-        keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
- 
+            $http.defaults.headers.common.Authorization = 'Basic ';
+        };
+        service.LoggedIn = function(){
+            if($rootScope.globals == $cookieStore.get('globals')){
+                return true
+            }
+            return false
+        };
+
+        return service;
+    }])
+
+
+
+.factory('Base64', function () {
+    /* jshint ignore:start */
+
+    var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+    return {
         encode: function (input) {
             var output = "";
             var chr1, chr2, chr3 = "";
             var enc1, enc2, enc3, enc4 = "";
             var i = 0;
- 
+
             do {
                 chr1 = input.charCodeAt(i++);
                 chr2 = input.charCodeAt(i++);
                 chr3 = input.charCodeAt(i++);
- 
+
                 enc1 = chr1 >> 2;
                 enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
                 enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
                 enc4 = chr3 & 63;
- 
+
                 if (isNaN(chr2)) {
                     enc3 = enc4 = 64;
                 } else if (isNaN(chr3)) {
                     enc4 = 64;
                 }
- 
+
                 output = output +
-                    this.keyStr.charAt(enc1) +
-                    this.keyStr.charAt(enc2) +
-                    this.keyStr.charAt(enc3) +
-                    this.keyStr.charAt(enc4);
+                keyStr.charAt(enc1) +
+                keyStr.charAt(enc2) +
+                keyStr.charAt(enc3) +
+                keyStr.charAt(enc4);
                 chr1 = chr2 = chr3 = "";
                 enc1 = enc2 = enc3 = enc4 = "";
             } while (i < input.length);
- 
+
             return output;
         },
- 
+
         decode: function (input) {
             var output = "";
             var chr1, chr2, chr3 = "";
             var enc1, enc2, enc3, enc4 = "";
             var i = 0;
- 
+
             // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
             var base64test = /[^A-Za-z0-9\+\/\=]/g;
             if (base64test.exec(input)) {
@@ -113,32 +132,34 @@
                     "Expect errors in decoding.");
             }
             input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
- 
+
             do {
-                enc1 = this.keyStr.indexOf(input.charAt(i++));
-                enc2 = this.keyStr.indexOf(input.charAt(i++));
-                enc3 = this.keyStr.indexOf(input.charAt(i++));
-                enc4 = this.keyStr.indexOf(input.charAt(i++));
- 
+                enc1 = keyStr.indexOf(input.charAt(i++));
+                enc2 = keyStr.indexOf(input.charAt(i++));
+                enc3 = keyStr.indexOf(input.charAt(i++));
+                enc4 = keyStr.indexOf(input.charAt(i++));
+
                 chr1 = (enc1 << 2) | (enc2 >> 4);
                 chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
                 chr3 = ((enc3 & 3) << 6) | enc4;
- 
+
                 output = output + String.fromCharCode(chr1);
- 
+
                 if (enc3 != 64) {
                     output = output + String.fromCharCode(chr2);
                 }
                 if (enc4 != 64) {
                     output = output + String.fromCharCode(chr3);
                 }
- 
+
                 chr1 = chr2 = chr3 = "";
                 enc1 = enc2 = enc3 = enc4 = "";
- 
+
             } while (i < input.length);
- 
+
             return output;
         }
     };
- 
+
+    /* jshint ignore:end */
+});
