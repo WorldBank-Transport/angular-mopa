@@ -17,12 +17,18 @@
     <div class="col-sm-6">
       <legend>Call Details</legend>
       <div class="form-group">
-        <label>Start time:</label> 
-        <input class="form-control" type="date" name="startDate" autocomplete=on ng-model="newReport.requested_datetime"/>
+        <label>Start time:</label>
+        <div class="input-group">
+          <div class="input-group-addon" ng-click="newReport.call_start_time=now()">Start now</div>
+          <input class="form-control" type="text" name="startDate" ng-model="newReport.call_start_time"/>
+        </div>
       </div>
       <div class="form-group">
-        <label>End time:</label> 
-        <input class="form-control" type="date" name="endDate" autocomplete=on />
+        <label>End time:</label>
+        <div class="input-group">
+          <div class="input-group-addon" ng-click="newReport.call_end_time=now()">End now</div>
+          <input class="form-control" type="text" name="endDate" ng-model="newReport.call_end_time"/>
+        </div>
       </div>
 
       <legend> Client details</legend>
