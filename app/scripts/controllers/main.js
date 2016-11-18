@@ -9,11 +9,35 @@
  */
 angular.module('mopaApp')
   .controller('MainCtrl', function ($scope, $location, report) {
-    report.query(function(data) {
-        $scope.reports = data;
-      });
+    var defaults = {
+      'reportSearch': {field: "service_request_id", query: ""}
+    };
+
+    $scope.pageStatusMessage = '';
+    $scope.reportSearch = angular.copy(defaults.reportSearch);
 
     $scope.openReport = function(id) {
       $location.path('/report/' + id);
+    };
+
+    $scope.update = function(){
+      $scope.pageStatusMessage = 'Loading ...';
+      var queryParameters = {};
+      $scope.reports = [];
+      if ($scope.reportSearch.query){
+        queryParameters[$scope.reportSearch.field] = $scope.reportSearch.query;
+      }
+      report.query(queryParameters, function(data) {
+        $scope.reports = data;
+        $scope.pageStatusMessage = '';
+      }, function(){
+        $scope.pageStatusMessage = 'Not Found';
+      });
+    };
+    $scope.update();
+
+    $scope.refresh = function(){
+      $scope.reportSearch = angular.copy(defaults.reportSearch);
+      $scope.update();
     };
   });

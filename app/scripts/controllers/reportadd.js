@@ -10,7 +10,7 @@
 angular.module('mopaApp')
   .controller('ReportaddCtrl', function ($scope, $location, $http, config, report) {
     $scope.newReport = {};
-    $scope.serviceCodes = []
+    $scope.serviceCodes = [];
 
     // FIXME: adding dummy coordinates
     $scope.newReport = {lat: -25.933857882269, long: 32.579494714737};
