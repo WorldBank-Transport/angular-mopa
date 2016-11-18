@@ -37,7 +37,12 @@
       <!-- Add your site or application content here -->
 
       <div class="">
-        <div ng-view=""></div>
+       <a ng-show = "page != 'login'" href="#/logout" 
+       class="btn btn-lg custom pull-right">Logout</a>
+     
+        <div ng-view="">
+          
+        </div>
       </div>
 
       <div class="footer">
@@ -86,6 +91,7 @@
      <script src="scripts/controllers/reportadd.js"></script>
      <script src="scripts/controllers/reportdetail.js"></script>
      <script src="scripts/controllers/login.js"></script>
+     <script src="scripts/controllers/logout.js"></script>
      <script src="scripts/js/index.js"></script>
 
 

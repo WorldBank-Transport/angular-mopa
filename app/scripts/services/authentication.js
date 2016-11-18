@@ -3,8 +3,8 @@
 angular
 .module('mopaApp')
 .factory('AuthenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
+    ['Base64', '$http', '$cookieStore', '$rootScope',
+    function (Base64, $http, $cookieStore, $rootScope) {
         var service = {};
 
         service.Login = function (username, password, callback) {
@@ -22,16 +22,16 @@ angular
                         console.log(response);
                         if(!response.data){
                             response.message = 'Wrong username or password.)';
-                        }
-                        callback(response);
-                    },
-                    function(response) {
-                        response.message = 'Wrong username or password.)';
-                        callback(response);
+            }
+            callback(response);
+        },
+        function(response) {
+            response.message = 'Wrong username or password.)';
+                callback(response);
 
-                    }
+            }
 
-                    );
+            );
 
 
             };
@@ -66,9 +66,17 @@ service.SetCredentials = function (username, password) {
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
+        service.LoggedIn = function(){
+            if($rootScope.globals == $cookieStore.get('globals')){
+                return true
+            }
+            return false
+        };
 
         return service;
     }])
+
+
 
 .factory('Base64', function () {
     /* jshint ignore:start */
