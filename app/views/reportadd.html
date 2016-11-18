@@ -81,7 +81,9 @@
 
       <div class="form-group">
         <label>Category:</label>
-        <input type="number" ng-model="newReport.service_code"/>
+        <select class="form-control" ng-model="newReport.service_code"
+            ng-options="item.service_code as item.service_name for item in serviceCodes">
+        </select>
       </div>
       <div class="form-group">
         <label>Complaint Details</label>
