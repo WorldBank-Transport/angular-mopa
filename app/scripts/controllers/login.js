@@ -14,10 +14,10 @@
     function ($scope, $rootScope,
         $location, AuthenticationService) {
 
-        $scope.page = 'login';
+        $scope.login = false;
 
         if(AuthenticationService.LoggedIn()){
-            $scope.page = 'home';
+            $scope.login = true;
             $location.path('/');
         }
 
@@ -31,9 +31,11 @@
                 $scope.username, $scope.password, function(response) {
                 if(response.data) {
                     AuthenticationService.SetCredentials(
-                        $scope.username, $scope.password);
-                    $scope.page = 'home';
+                    $scope.username, $scope.password);
+                    
                     $location.path('/');
+                    $scope.login = true;
+
                 } else {
                     $scope.error = response.message;
                     $scope.dataLoading = false;
