@@ -47,7 +47,7 @@
         <tfoot>
           <tr>
             <th>Id</th>
-            <th>Start date</th>
+            <th>Date</th>
             <th>Area</th>
             <th>Category</th>
             <th>Status</th>
@@ -55,39 +55,14 @@
           </tr>
         </tfoot>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>2011/02/04</td>
-            <td>Kimara</td>
-            <td>Lack of water</td>
-            <td>Open</td>
-            <td>Engineer</td>
+          <tr ng-repeat="report in reports">
+            <td>{{ report.service_request_id }}</td>
+            <td>{{ report.requested_datetime|date:'medium' }}</td>
+            <td>{{ report.agency_responsible }}</td>
+            <td>{{ report.service_name }}</td>
+            <td>{{ report.status }}</td>
+            <td>{{ report.assigned_to }}</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>2011/07/25</td>
-            <td>Tabata</td>
-            <td>Leakage</td>
-            <td>Open</td>
-            <td>Control room</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>2009/01/12</td>
-            <td>Kawe</td>
-            <td>Disconnection</td>
-            <td>Complete</td>
-            <td>Engineer</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>2009/04/12</td>
-            <td>Kimara</td>
-            <td>Illegal connection</td>
-            <td>In progress</td>
-            <td>Customer care</td>
-          </tr>
-          
         </tbody>
       </table>
 
