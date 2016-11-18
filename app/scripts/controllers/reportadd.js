@@ -20,7 +20,7 @@ angular.module('mopaApp')
 
     $scope.submitReport = function (){
       report.save($scope.newReport, function (response){
-        $location.url('/report/' + response[0].service_request_id)
+        $location.url('/report/' + response[0].service_request_id);
       });
     };
   });
