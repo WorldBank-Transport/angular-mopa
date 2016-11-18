@@ -13,7 +13,7 @@
     <h1>Welcome</h1>
   </div>
   <div class="container">
-    <div class="row btn-row">
+    <div class="row btn-row" ng-click="openReport('add')">
       <div class="col-sm-6 btn btn-lg green btn-outline">
         <a ng-href="#/report/add" type="button" class="">New Report</a>
       </div>
@@ -33,61 +33,28 @@
 
 
 
-      <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Start date</th>
+            <th>Date</th>
+            <th>Phone</th>
             <th>Area</th>
             <th>Category</th>
             <th>Status</th>
             <th>Assigned to</th>
           </tr>
         </thead>
-        <tfoot>
-          <tr>
-            <th>Id</th>
-            <th>Start date</th>
-            <th>Area</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Assigned to</th>
-          </tr>
-        </tfoot>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>2011/02/04</td>
-            <td>Kimara</td>
-            <td>Lack of water</td>
-            <td>Open</td>
-            <td>Engineer</td>
+          <tr ng-repeat="report in reports" ng-click="openReport(report.service_request_id)" style="cursor: pointer">
+            <td>{{ report.service_request_id }}</td>
+            <td><small>{{ report.requested_datetime|date:'short' }}</small></td>
+            <td>{{ report.phone }}</td>
+            <td>{{ report.agency_responsible }}</td>
+            <td>{{ report.service_name }}</td>
+            <td>{{ report.status }}</td>
+            <td>{{ report.assigned_to }}</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>2011/07/25</td>
-            <td>Tabata</td>
-            <td>Leakage</td>
-            <td>Open</td>
-            <td>Control room</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>2009/01/12</td>
-            <td>Kawe</td>
-            <td>Disconnection</td>
-            <td>Complete</td>
-            <td>Engineer</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>2009/04/12</td>
-            <td>Kimara</td>
-            <td>Illegal connection</td>
-            <td>In progress</td>
-            <td>Customer care</td>
-          </tr>
-          
         </tbody>
       </table>
 

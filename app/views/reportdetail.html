@@ -1,54 +1,53 @@
 
+<div ng-if="report">
 <div class="pen-title">
-  <h2>Update report</h2>
+  <h2>Report: <span class="text-info">#{{ report.service_request_id  }}</span></h2>
 </div>
+
 <!-- Form Module-->
 <div class="module form-module add-report">
   <div class="form" >
-    <h2>Report details</h2>
     <form class="">
     <div class="row">
     <div class="col-sm-12">
     <div class="col-sm-6">
       <legend>Call Details</legend>
       <div class="form-group">
-        <label>Start time:</label> 
-        <input class="form-control" type="date" value="{{startDate}}" name="startDate" autocomplete=on />
+        <label>Start time:</label>
+        <input class="form-control" type="text" name="startDate" ng-model="report.call_start_time" ng-disabled="true"/>
       </div>
       <div class="form-group">
-        <label>End time:</label> 
-        <input class="form-control" type="date" value="{{endDate}}" name="endDate" 
-        autocomplete=on />
+        <label>End time:</label>
+        <input class="form-control" type="text" name="endDate" ng-model="report.call_end_time" ng-disabled="true"/>
       </div>
 
       <legend> Client details</legend>
       <div class="form-group">
         <label>Name</label> 
-        <input class="form-control" type="text" name="clientName" value="{{clientName}}"/>
+        <input class="form-control" type="text" name="clientName" ng-model="report.name" ng-disabled="true"/>
       </div>
       <div class="form-group">
         <label>Account number</label> 
-        <input class="form-control" type="text" name="accountNumber" value="{{accountNumber}}" />
+        <input class="form-control" type="text" name="accountNumber" ng-model="report.account_number" ng-disabled="true"/>
       </div>
 
       <div class="form-group">
         <label>Phone</label> 
-        <input class="form-control" type="text" name="phoneNumber" value="{{phoneNumber}}"/>
+        <input class="form-control" type="text" name="phoneNumber" ng-model="report.phone" ng-disabled="true" ng-disabled="true"/>
       </div>
       <div class="form-group">
         <label>Email</label> 
-        <input class="form-control" type="email" name="email" value="{{email}}" />
+        <input class="form-control" type="email" name="email" ng-model="report.email" ng-disabled="true"/>
       </div>
 
       <legend> Location</legend>
       <div class="form-group">
         <label>Address:</label> 
-        <input class="form-control" type="text" name="address" value="{{address}}"/>
+        <input class="form-control" type="text" name="address" ng-model="report.address" ng-disabled="true"/>
       </div>
       <div class="form-group">
         <label>Area:</label>
-        <select class="selectpicker form-control form-control-sm" name="areas">
-          <option value="" disabled selected>{{currentArea}}</option>
+        <select class="selectpicker form-control form-control-sm" name="areas" ng-model="report.agency_responsible" ng-disabled="true">
           <option value="head_quater">Head quarter</option>
           <option value="kinondoni">Kinondoni office</option>
           <option value="kawe">Kawe office</option>
@@ -72,19 +71,20 @@
 
       <div class="form-group">
         <label>Category:</label>
-        <input type="text" value="{{category}}" name="category"/>
+        <select class="form-control" ng-model="report.service_code"
+            ng-options="item.service_code as item.service_name for item in serviceCodes"
+            ng-disabled="true">
+        </select>
       </div>
       <div class="form-group">
         <label>Complaint Details</label>
-        <textarea class="form-control" rows="5" id="complaintDetails" 
-        value="{{complaint}}" name="complaintDetails"></textarea>
+        <textarea class="form-control" rows="5" id="complaintDetails" ng-model="report.description" ng-disabled="true"></textarea>
       </div>
 
       <legend>Follow-up</legend>
       <div class="form-group">
         <label>Status:</label>
-        <select class="selectpicker form-control form-control-sm" name="status">
-          <option value="" disabled selected>{{currentStatus}}</option>
+        <select class="selectpicker form-control form-control-sm" name="status" ng-model="report.service_notice">
           <option value="open"> Open </option>
           <option value="inProgress"> In progress </option>
           <option value="sentToArea"> Sent to area </option>
@@ -93,13 +93,11 @@
       </div>
       <div class="form-group">
         <label>Actions taken:</label> 
-        <textarea class="form-control" rows="4" id="actionsTaken" 
-        value="{{actionsTake}}" name="actionsTaken"></textarea>
+        <textarea class="form-control" rows="4" id="actionsTaken" ng-model="report.status_note"></textarea>
       </div>
       <div class="form-group">
         <label>Assigned to:</label> 
-        <select class="selectpicker form-control form-control-sm" name="assignedTo">
-          <option value="" disabled selected>{{assignedTo}}</option>
+        <select class="selectpicker form-control form-control-sm" name="assignedTo" ng-model="report.assigned_to">
           <option value="controlRoom"> Control room </option>
           <option value="engineer"> Engineer </option>
           <option value="customerCare"> Customer care </option>
@@ -109,8 +107,7 @@
       </div>
       <div class="form-group">
         <label>Mode of forwarding:</label>
-        <select class="selectpicker form-control form-control-sm" name="forwadingMode">
-          <option value="" disabled selected>{{forwadingMode}}</option>
+        <select class="selectpicker form-control form-control-sm" name="forwadingMode" ng-model="report.forwarding_mode">
           <option value="email"> Email </option>
           <option value="phone"> Phone</option>
           <option value="sms"> SMS</option>
@@ -118,19 +115,24 @@
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" value="{{feedback}}" 
-          name="feedback"> Feedback to citizen 
+          <input type="checkbox" name="feedback" ng-model="report.feedback"> Feedback to citizen 
         </label>
       </div>
       </div>
       </div>
       </div>
 
-      <button>Submit</button>
+      <button type="submit">Update</button>
 
     </form>
     
   </div>
 
 </div>
+
 <br><br>
+</div>
+
+<div ng-if="!report">
+    <h1 class="text-muted text-center">{{ pageStatusMessage }}</h1>
+</div>
