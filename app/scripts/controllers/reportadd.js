@@ -8,10 +8,15 @@
  * Controller of the mopaApp
  */
 angular.module('mopaApp')
-  .controller('ReportaddCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ReportaddCtrl', function ($scope, $location, report) {
+    $scope.newReport = {};
+
+    // FIXME: adding dummy coordinates
+    $scope.newReport = {lat: -25.933857882269, long: 32.579494714737};
+
+    $scope.submitReport = function (){
+      report.save($scope.newReport, function (response){
+        $location.url('/report/' + response[0].service_request_id)
+      });
+    };
   });

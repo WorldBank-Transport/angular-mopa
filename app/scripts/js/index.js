@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function() {
     $('#example').DataTable();
 } );
@@ -14,10 +16,6 @@ $('.toggle').click(function(){
     opacity: "toggle"
   }, "slow");
 });
-
-
-/*global SyntaxHighlighter*/
-SyntaxHighlighter.config.tagName = 'code';
 
 if ( window.$ ) {
 	$(document).ready( function () {
