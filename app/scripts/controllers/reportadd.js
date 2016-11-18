@@ -20,7 +20,7 @@ angular.module('mopaApp')
     });
 
     $scope.now = function (){
-      return new Date().toISOString();
+      return new Date().toISOString().split('.')[0]+"Z";
     };
 
     $scope.submitReport = function (){
