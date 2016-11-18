@@ -69,10 +69,27 @@
 
         </select>
       </div>
+      <legend>Call Details</legend>
+      <div class="form-group">
+        <label>End time:</label>
+        <div class="input-group">
+          <div class="input-group-addon" ng-click="newReport.call_end_time=now()">End now</div>
+          <input class="form-control" type="text" name="endDate" ng-model="newReport.call_end_time" ng-required="true"/>
+        </div>
       </div>
+      </div>
+
       <div class="col-sm-6">
       <legend> Complaint</legend>
 
+      <div class="form-group">
+        <label>Group:</label>
+        <select class="form-control" ng-model="selectedServiceGroup" ng-change="updateServiceGroup()">
+          <option></option>
+          <option value="Commercial">Commercial</option>
+          <option value="Non-Revenue Calls">Non-Revenue Calls</option>
+        </select>
+      </div>
       <div class="form-group">
         <label>Category:</label>
         <select class="form-control" ng-model="newReport.service_code"
@@ -125,14 +142,6 @@
         <label>
           <input type="checkbox" name="feedback" ng-model="newReport.feedback"/> Feedback to citizen 
         </label>
-      </div>
-      <legend>Call Details</legend>
-      <div class="form-group">
-        <label>End time:</label>
-        <div class="input-group">
-          <div class="input-group-addon" ng-click="newReport.call_end_time=now()">End now</div>
-          <input class="form-control" type="text" name="endDate" ng-model="newReport.call_end_time" ng-required="true"/>
-        </div>
       </div>
       </div>
       </div>
