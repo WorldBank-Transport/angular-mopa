@@ -22,6 +22,10 @@
      <div class="form-group">
         <button class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
       </div>
+     <div class="form-group">
+        <label>Results per page</label>
+        <input type="number" class="form-control" ng-model="reportSearch.limit" ng-change='update()'>
+      </div>
     </form>
     <hr>
 

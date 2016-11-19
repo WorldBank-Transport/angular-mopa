@@ -22,7 +22,7 @@ angular.module('mopaApp')
 
     $scope.update = function(){
       $scope.pageStatusMessage = 'Loading ...';
-      var queryParameters = {limit: defaults.reportSearch.limit};
+      var queryParameters = {limit: $scope.reportSearch.limit};
       $scope.reports = [];
       if ($scope.reportSearch.query){
         queryParameters[$scope.reportSearch.field] = $scope.reportSearch.query;
