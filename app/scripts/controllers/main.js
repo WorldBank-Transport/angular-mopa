@@ -10,7 +10,7 @@
 angular.module('mopaApp')
   .controller('MainCtrl', function ($scope, $location, report) {
     var defaults = {
-      'reportSearch': {field: "service_request_id", query: ""}
+      'reportSearch': {field: "service_request_id", query: "", limit: 100}
     };
 
     $scope.pageStatusMessage = '';
@@ -22,7 +22,7 @@ angular.module('mopaApp')
 
     $scope.update = function(){
       $scope.pageStatusMessage = 'Loading ...';
-      var queryParameters = {};
+      var queryParameters = {limit: $scope.reportSearch.limit};
       $scope.reports = [];
       if ($scope.reportSearch.query){
         queryParameters[$scope.reportSearch.field] = $scope.reportSearch.query;

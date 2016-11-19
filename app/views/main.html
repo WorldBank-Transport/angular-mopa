@@ -1,24 +1,4 @@
 
-<div >
- <a  href="#/logout" 
-       class="btn btn-lg custom pull-right">Logout</a>
-</div>
-<div class="col-sm-12">
- 
-  <div class="pen-title text-center" style="margin:10 0 10 10; padding:0px 10px 0px 10px;">
-    <h1>Welcome</h1>
-  </div>
-  <div class="container">
-    <div class="row btn-row" ng-click="openReport('add')">
-      <div class="col-sm-6 btn btn-lg green btn-outline">
-        <a ng-href="#/report/add" type="button" class="">New Report</a>
-      </div>
-      <div class="col-sm-6 btn btn-lg green btn-outline">
-        <a ng-href="#/" type="button" class="">Reports</a>
-      </div>
-    </div>
-</div>
-
 <div class="tb-body">
 
   <div class="dataTables_wrapper form-inline dt-bootstrap">
@@ -34,13 +14,17 @@
         </div>
       </div>
      <div class="form-group">
-        <select class="form-control" ng-model="reportSearch.field" ng-change="update()">
+        <select class="form-control" ng-model="reportSearch.field" ng-change="if(reportSearch.query){update()}">
           <option value="service_request_id">Report ID</option>
           <option value="phone">Phone Number</option>
         </select>
       </div>
      <div class="form-group">
         <button class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+      </div>
+     <div class="form-group">
+        <label>Results per page</label>
+        <input type="number" class="form-control" ng-model="reportSearch.limit" ng-change='update()'>
       </div>
     </form>
     <hr>
