@@ -16,10 +16,10 @@
 
         $scope.login = false;
 
-        // if(AuthenticationService.LoggedIn()){
-        //     $scope.login = true;
-        //     $location.path('/');
-        // }
+        if(AuthenticationService.LoggedIn()){
+            $scope.login = true;
+            $location.path('/');
+        }
 
         // reset login status
         AuthenticationService.ClearCredentials();
