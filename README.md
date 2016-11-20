@@ -22,10 +22,13 @@ To build the source code for deployment run
 
     grunt
  
- This will build the source code into a folder named `dist` within your project root. The content of the `dist` folder can be server using your favorite web server as a simple static content.
- 
+This will build the source code into a folder named `dist` within your project root. The content of the `dist` folder can be server using your favorite web server as a simple static content.
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+If you getting errors when building try install some build dependancies by running:
+
+    npm install grunt-karma karma karma-phantomjs-launcher karma-jasmine jasmine-core phantomjs-prebuilt --save-dev
 
 Running `grunt test` will run the unit tests with karma.
+
+This project was generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.15.1.
