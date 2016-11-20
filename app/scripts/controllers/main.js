@@ -10,7 +10,7 @@
 angular.module('mopaApp')
   .controller('MainCtrl', function ($scope, $location, report) {
     var defaults = {
-      'reportSearch': {field: "service_request_id", query: "", limit: 100}
+      'reportSearch': {field: 'service_request_id', query: '', limit: 100}
     };
 
     $scope.pageStatusMessage = '';
