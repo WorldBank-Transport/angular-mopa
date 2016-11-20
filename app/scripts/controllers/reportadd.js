@@ -1,4 +1,6 @@
 'use strict';
+// jshint sub:true
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 
 /**
  * @ngdoc function
@@ -23,7 +25,7 @@ angular.module('mopaApp')
     });
 
     $scope.now = function (){
-      return new Date().toISOString().split('.')[0]+"Z";
+      return new Date().toISOString().split('.')[0]+'Z';
     };
 
     $scope.submitReport = function (){
@@ -36,7 +38,7 @@ angular.module('mopaApp')
       $scope.serviceCodes = angular.copy($scope.serviceCodesAll);
       $scope.newReport.service_code = '';
       if ($scope.selectedServiceGroup){
-        $scope.serviceCodes = $filter('filter')($scope.serviceCodesAll, {"group": $scope.selectedServiceGroup});
+        $scope.serviceCodes = $filter('filter')($scope.serviceCodesAll, {'group': $scope.selectedServiceGroup});
       }
     };
 
