@@ -19,19 +19,19 @@ angular
                     )
                 .then(
                     function(response) {
-                        console.log(response);
-                        if(!response.data){
-                            response.message = 'Wrong username or password.)';
-            }
-            callback(response);
-        },
-        function(response) {
-            response.message = 'Wrong username or password.)';
-                callback(response);
+                        console.log(response.status);
+                        if(response.status != 200){
+                            response.message = 'Wrong username or password';
+                        }
+                        callback(response);
+                    },
+                    function(response) {
+                        response.message = 'Wrong username or password';
+                        callback(response);
 
-            }
+                        }
 
-            );
+                );
 
 
             };

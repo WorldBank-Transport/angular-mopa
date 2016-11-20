@@ -29,7 +29,7 @@
             $scope.dataLoading = true;
             AuthenticationService.Login(
                 $scope.username, $scope.password, function(response) {
-                if(response.data) {
+                if(response.status == 200) {
                     AuthenticationService.SetCredentials(
                     $scope.username, $scope.password);
                     
